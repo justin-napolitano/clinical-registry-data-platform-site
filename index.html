@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registry Data Platform Showcase</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <span>Clinical Registry Platform</span>
+        </div>
+        <div class="nav-links">
+          <a href="#registries">Registries</a>
+          <a href="#flow">Ingestion</a>
+          <a href="#metadata">Metadata</a>
+          <a href="#streamlit">Apps</a>
+        </div>
+      </nav>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Metadata-driven healthcare registry engineering</p>
+          <h1>From raw registry exports to governed analytics products.</h1>
+          <p class="hero-text">
+            A bronze, silver, and gold data platform for clinical registries:
+            preserving raw source evidence, normalizing schema drift, mapping
+            source fields to canonical definitions, and publishing reviewable
+            gold contracts for analytics.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#flow">Walk the pipeline</a>
+            <a class="button secondary" href="#streamlit">Open STS tools</a>
+          </div>
+        </div>
+
+        <aside class="scoreboard" aria-label="Platform highlights">
+          <div class="score-row">
+            <span>Architecture</span>
+            <strong>Bronze → Silver → Gold</strong>
+          </div>
+          <div class="score-row">
+            <span>Governance</span>
+            <strong>PR-reviewed metadata</strong>
+          </div>
+          <div class="score-row">
+            <span>Operating Model</span>
+            <strong>Health + Planning</strong>
+          </div>
+          <div class="score-row">
+            <span>Current Demo</span>
+            <strong>STS Review Console</strong>
+          </div>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section id="registries" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Registry coverage</p>
+          <h2>One platform pattern, many registry sources.</h2>
+          <p>
+            Each registry can have different source exports, file layouts, and
+            schema versions. The platform keeps the runtime stable by moving
+            source variation into metadata contracts.
+          </p>
+        </div>
+
+        <div class="registry-grid">
+          <article class="registry-card active">
+            <div class="card-topline">
+              <span class="pill ready">Active demo</span>
+              <span>Adult Cardiac Surgery</span>
+            </div>
+            <h3>STS</h3>
+            <p>
+              The current showcase registry. Demonstrates schema version
+              grouping, source-to-canonical lineage, dictionary review, Power BI
+              coverage, and flat gold planning.
+            </p>
+            <dl>
+              <div><dt>Bronze</dt><dd>Schema-version grouped raw tables</dd></div>
+              <div><dt>Silver</dt><dd>Canonical normalized registry table</dd></div>
+              <div><dt>Gold</dt><dd>Flat publication contract for analytics</dd></div>
+            </dl>
+          </article>
+
+          <article class="registry-card">
+            <div class="card-topline">
+              <span class="pill planned">Planned</span>
+              <span>Interventional Cardiology</span>
+            </div>
+            <h3>CathPCI</h3>
+            <p>
+              Large Excel-driven source dictionary and raw extract pattern.
+              Next useful demo: show how metadata generation scales from STS
+              into broader registry coverage.
+            </p>
+            <dl>
+              <div><dt>Focus</dt><dd>Dictionary-driven ingest and mapping</dd></div>
+              <div><dt>Risk</dt><dd>High table and column volume</dd></div>
+            </dl>
+          </article>
+
+          <article class="registry-card">
+            <div class="card-topline">
+              <span class="pill planned">Candidate</span>
+              <span>Structural Heart</span>
+            </div>
+            <h3>LAAO / AFib / Other</h3>
+            <p>
+              Candidate registries follow the same metadata lifecycle: raw
+              provenance, schema drift detection, mapping review, validation,
+              and governed gold publication.
+            </p>
+            <dl>
+              <div><dt>Pattern</dt><dd>Reuse ingestion and review contracts</dd></div>
+              <div><dt>Goal</dt><dd>Add registries without rewriting runtime</dd></div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section id="flow" class="section split-section">
+        <div class="section-heading narrow">
+          <p class="eyebrow">End-to-end flow</p>
+          <h2>How a registry becomes usable data.</h2>
+          <p>
+            The pipeline is intentionally metadata managed. Raw data is
+            preserved first; interpretation happens through versioned mapping
+            and review artifacts.
+          </p>
+        </div>
+
+        <div class="pipeline">
+          <article class="pipeline-step">
+            <span class="step-number">01</span>
+            <h3>Source Intake</h3>
+            <p>Collect raw files, file hashes, modified timestamps, source paths, and inferred schema signatures.</p>
+          </article>
+          <article class="pipeline-step">
+            <span class="step-number">02</span>
+            <h3>Bronze Preserve</h3>
+            <p>Land raw values into schema-version grouped bronze tables and quarantine unmapped structures without losing the run.</p>
+          </article>
+          <article class="pipeline-step">
+            <span class="step-number">03</span>
+            <h3>Silver Normalize</h3>
+            <p>Apply approved source-to-canonical mappings, casts, aliases, nullable policy, and semantic grouping.</p>
+          </article>
+          <article class="pipeline-step">
+            <span class="step-number">04</span>
+            <h3>Gold Publish</h3>
+            <p>Publish governed flat contracts for analytics, Power BI coverage, filters, and business logic review.</p>
+          </article>
+          <article class="pipeline-step">
+            <span class="step-number">05</span>
+            <h3>Review + Promote</h3>
+            <p>Export decisions into patch artifacts, validate through the control plane, and promote by pull request.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="metadata" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Metadata collected</p>
+          <h2>The platform captures the evidence behind every transform.</h2>
+        </div>
+
+        <div class="metadata-board">
+          <article>
+            <span class="layer-label bronze">Bronze</span>
+            <h3>Raw provenance and schema evidence</h3>
+            <ul>
+              <li>Registry id, source file path, file hash, source modified timestamp</li>
+              <li>Ingestion run id, ingested timestamp, source schema version</li>
+              <li>Structure bucket, bronze table, column ordinal, inferred type</li>
+              <li>Row counts, load status, quarantine reason, validation errors</li>
+            </ul>
+          </article>
+          <article>
+            <span class="layer-label silver">Silver</span>
+            <h3>Canonical mapping and normalization evidence</h3>
+            <ul>
+              <li>Source schema version, bronze table, source column, target silver column</li>
+              <li>Mapping status, match rule, confidence score, mapping evidence</li>
+              <li>Target type, nullable policy, semantic group, transform rule</li>
+              <li>Approved by, effective version range, lineage key, validation status</li>
+            </ul>
+          </article>
+          <article>
+            <span class="layer-label gold">Gold</span>
+            <h3>Publication contract and analytics evidence</h3>
+            <ul>
+              <li>Published column list, source silver table, target gold table</li>
+              <li>Business rule notes, filters, inclusion status, review status</li>
+              <li>Power BI coverage, missing fields, candidate publication gaps</li>
+              <li>Versioned contract artifacts for governed promotion</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section governance">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Governance story</p>
+          <h2>Two operating views, one controlled metadata lifecycle.</h2>
+        </div>
+        <div class="two-column">
+          <article class="feature-panel">
+            <h3>Production Health</h3>
+            <p>
+              Shows whether the data platform is safe today: latest run status,
+              freshness, validation failures, schema drift, and alert
+              candidates.
+            </p>
+          </article>
+          <article class="feature-panel">
+            <h3>Metadata Planning</h3>
+            <p>
+              Shows what the platform should become next: dictionary changes,
+              low-confidence mappings, Power BI gaps, and flat gold candidates.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="streamlit" class="section app-launch">
+        <div class="section-heading">
+          <p class="eyebrow">Local demo launchpad</p>
+          <h2>Run the local site and STS Streamlit tools side by side.</h2>
+          <p>
+            Start the Streamlit review console on port 8501, then use this page
+            as the interview walkthrough and launchpad.
+          </p>
+        </div>
+
+        <div class="command-grid">
+          <article class="command-card">
+            <h3>Start this website</h3>
+            <code>python -m http.server 8080 --directory showcase/local-registry-website</code>
+          </article>
+          <article class="command-card">
+            <h3>Start STS Streamlit review app</h3>
+            <code>uv run streamlit run tools/mapping_review_app.py --server.port 8501</code>
+          </article>
+          <article class="command-card">
+            <h3>Open Snowflake E2E dry-run plan</h3>
+            <code>uv run registry-review-snowflake seed --registry sts --run-id 20260528T000000Z --dry-run</code>
+          </article>
+        </div>
+
+        <div class="launch-buttons">
+          <a class="button primary" href="http://localhost:8501" target="_blank" rel="noreferrer">Open STS Streamlit</a>
+          <a class="button secondary" href="http://localhost:8080" target="_blank" rel="noreferrer">Open Showcase Home</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
