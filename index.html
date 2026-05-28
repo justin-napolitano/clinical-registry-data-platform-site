@@ -3,260 +3,423 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Registry Data Platform Showcase</title>
+    <title>Registry Platform Documentation</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="hero">
-      <nav class="nav">
-        <div class="brand">
-          <span class="brand-mark"></span>
-          <span>Clinical Registry Platform</span>
-        </div>
-        <div class="nav-links">
-          <a href="#registries">Registries</a>
-          <a href="#flow">Ingestion</a>
-          <a href="#metadata">Metadata</a>
-          <a href="#streamlit">Apps</a>
-        </div>
+    <header class="topbar">
+      <div>
+        <p class="kicker">Pipeline documentation portal</p>
+        <h1>Clinical Registry Data Platform</h1>
+      </div>
+      <nav>
+        <a href="#inventory">Inventory</a>
+        <a href="#repos">Repos</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#metadata">Metadata</a>
+        <a href="#artifacts">Artifacts</a>
+        <a href="#apps">Apps</a>
       </nav>
-
-      <section class="hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Metadata-driven healthcare registry engineering</p>
-          <h1>From raw registry exports to governed analytics products.</h1>
-          <p class="hero-text">
-            A bronze, silver, and gold data platform for clinical registries:
-            preserving raw source evidence, normalizing schema drift, mapping
-            source fields to canonical definitions, and publishing reviewable
-            gold contracts for analytics.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#flow">Walk the pipeline</a>
-            <a class="button secondary" href="#streamlit">Open STS tools</a>
-          </div>
-        </div>
-
-        <aside class="scoreboard" aria-label="Platform highlights">
-          <div class="score-row">
-            <span>Architecture</span>
-            <strong>Bronze → Silver → Gold</strong>
-          </div>
-          <div class="score-row">
-            <span>Governance</span>
-            <strong>PR-reviewed metadata</strong>
-          </div>
-          <div class="score-row">
-            <span>Operating Model</span>
-            <strong>Health + Planning</strong>
-          </div>
-          <div class="score-row">
-            <span>Current Demo</span>
-            <strong>STS Review Console</strong>
-          </div>
-        </aside>
-      </section>
     </header>
 
     <main>
-      <section id="registries" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Registry coverage</p>
-          <h2>One platform pattern, many registry sources.</h2>
+      <section class="summary">
+        <article>
+          <h2>Purpose</h2>
           <p>
-            Each registry can have different source exports, file layouts, and
-            schema versions. The platform keeps the runtime stable by moving
-            source variation into metadata contracts.
+            This site documents the registry ingestion and modelling pipeline:
+            source intake, bronze preservation, silver contract generation,
+            gold contract generation, validation, and governed promotion.
           </p>
+        </article>
+        <article>
+          <h2>How to describe current coverage</h2>
+          <p>
+            The modelling and contract-generation pipeline has been exercised
+            across the registry set. STS is the most complete interactive review
+            example because its dictionary, column mapping, and lineage files
+            are promoted into the current review-console manifest shape.
+          </p>
+        </article>
+      </section>
+
+      <section id="repos" class="section">
+        <div class="section-title">
+          <p class="kicker">Repository map</p>
+          <h2>Repos and local folders touched by this data product</h2>
         </div>
-
-        <div class="registry-grid">
-          <article class="registry-card active">
-            <div class="card-topline">
-              <span class="pill ready">Active demo</span>
-              <span>Adult Cardiac Surgery</span>
-            </div>
-            <h3>STS</h3>
-            <p>
-              The current showcase registry. Demonstrates schema version
-              grouping, source-to-canonical lineage, dictionary review, Power BI
-              coverage, and flat gold planning.
-            </p>
-            <dl>
-              <div><dt>Bronze</dt><dd>Schema-version grouped raw tables</dd></div>
-              <div><dt>Silver</dt><dd>Canonical normalized registry table</dd></div>
-              <div><dt>Gold</dt><dd>Flat publication contract for analytics</dd></div>
-            </dl>
-          </article>
-
-          <article class="registry-card">
-            <div class="card-topline">
-              <span class="pill planned">Planned</span>
-              <span>Interventional Cardiology</span>
-            </div>
-            <h3>CathPCI</h3>
-            <p>
-              Large Excel-driven source dictionary and raw extract pattern.
-              Next useful demo: show how metadata generation scales from STS
-              into broader registry coverage.
-            </p>
-            <dl>
-              <div><dt>Focus</dt><dd>Dictionary-driven ingest and mapping</dd></div>
-              <div><dt>Risk</dt><dd>High table and column volume</dd></div>
-            </dl>
-          </article>
-
-          <article class="registry-card">
-            <div class="card-topline">
-              <span class="pill planned">Candidate</span>
-              <span>Structural Heart</span>
-            </div>
-            <h3>LAAO / AFib / Other</h3>
-            <p>
-              Candidate registries follow the same metadata lifecycle: raw
-              provenance, schema drift detection, mapping review, validation,
-              and governed gold publication.
-            </p>
-            <dl>
-              <div><dt>Pattern</dt><dd>Reuse ingestion and review contracts</dd></div>
-              <div><dt>Goal</dt><dd>Add registries without rewriting runtime</dd></div>
-            </dl>
-          </article>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Role in product</th>
+                <th>Repository / path</th>
+                <th>Interview framing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Registry control plane</strong></td>
+                <td>Metadata ledger, bronze/silver/gold manifests, dry-run artifacts, generated SQL, validation SQL.</td>
+                <td><a href="https://github.com/JNA31A_AIT/registry-control-plane" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/registry-control-plane</a></td>
+                <td>Core data-product compiler and governed metadata source of truth.</td>
+              </tr>
+              <tr>
+                <td><strong>STS runtime/model adapters</strong></td>
+                <td>STS bronze bridge, STS silver normalization, version support, dictionary compiler, lineage generation, and dry-run artifacts.</td>
+                <td><code>registry-control-plane/src/registry_control_plane/bronze/sts_bridge.py</code>, <code>silver/sts_normalization.py</code>, <code>silver/sts_dictionary_seed.py</code></td>
+                <td>STS is implemented inside the shared control plane rather than a separate runtime repo.</td>
+              </tr>
+              <tr>
+                <td><strong>CathPCI runtime/model adapters</strong></td>
+                <td>CathPCI bronze preprocessing, workbook bridge, migration boundary logic, and dry-run contracts.</td>
+                <td><code>registry-control-plane/src/registry_control_plane/bronze/cathpci_preprocess.py</code>, <code>bronze/cathpci_bridge.py</code>, <code>migration/cathpci_boundary.py</code></td>
+                <td>CathPCI is also integrated into the shared control plane rather than a separate runtime repo.</td>
+              </tr>
+              <tr>
+                <td><strong>Mapping review console</strong></td>
+                <td>Local/Snowflake Streamlit review surface and this documentation portal.</td>
+                <td><code>registry-mapping-review-console</code> local repo, no remote configured</td>
+                <td>Human review layer for lineage, dictionary, Power BI coverage, and gold planning.</td>
+              </tr>
+              <tr>
+                <td><strong>Platform template / orchestration tools</strong></td>
+                <td>Governance rules, execution plans, DAG orchestration, validation gates, agent workflow tooling.</td>
+                <td><a href="https://github.com/JNA31A_AIT/codex_platform" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/codex_platform</a></td>
+                <td>Engineering system used to plan, validate, and govern implementation work.</td>
+              </tr>
+              <tr>
+                <td><strong>Project control plane</strong></td>
+                <td>Project-level orchestration plan for registry buildout and implementation slices.</td>
+                <td><a href="https://github.com/JNA31A_AIT/project-control-plane" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/project-control-plane</a></td>
+                <td>Work orchestration layer for coordinating registry platform delivery.</td>
+              </tr>
+              <tr>
+                <td><strong>Researcher harness</strong></td>
+                <td>Research/evidence workflow used to support planning, design reviews, and implementation decisions.</td>
+                <td><a href="https://github.com/JNA31A_AIT/researcher-harness" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/researcher-harness</a></td>
+                <td>Research-backed planning and decision-support tooling.</td>
+              </tr>
+              <tr>
+                <td><strong>Clinical metadata repo</strong></td>
+                <td>Governed source metadata workspace for registry dictionaries, source artifacts, and modelling inputs.</td>
+                <td><a href="https://github.com/JNA31A_AIT/cardio-vascular-institute-meta-work-data" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/cardio-vascular-institute-meta-work-data</a></td>
+                <td>Metadata product input repo feeding bronze/silver/gold contract generation.</td>
+              </tr>
+              <tr>
+                <td><strong>Metadata run outputs</strong></td>
+                <td>Local generated outputs and exploratory run material used while validating metadata extraction.</td>
+                <td><code>cardio-vascular-institute-meta-work-data-runs/</code> local folder, no remote configured</td>
+                <td>Run-output workspace, separate from the governed metadata repo.</td>
+              </tr>
+              <tr>
+                <td><strong>AHA CSC runtime</strong></td>
+                <td>Registry-specific runtime repository for AHA CSC pipeline artifacts.</td>
+                <td><a href="https://github.com/JNA31A_AIT/aha-csc-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/aha-csc-agent-runtime</a></td>
+                <td>Runtime-specific extension point for one registry family.</td>
+              </tr>
+              <tr>
+                <td><strong>AHA PSC runtime</strong></td>
+                <td>Registry-specific runtime repository for AHA PSC pipeline artifacts.</td>
+                <td><a href="https://github.com/JNA31A_AIT/aha-psc-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/aha-psc-agent-runtime</a></td>
+                <td>Runtime-specific extension point for one registry family.</td>
+              </tr>
+              <tr>
+                <td><strong>Intermacs runtime</strong></td>
+                <td>Registry-specific runtime repository for Intermacs pipeline artifacts.</td>
+                <td><a href="https://github.com/JNA31A_AIT/intermacs-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/intermacs-agent-runtime</a></td>
+                <td>Runtime-specific extension point for one registry family.</td>
+              </tr>
+              <tr>
+                <td><strong>SVS runtime</strong></td>
+                <td>Registry-specific runtime repository for SVS pipeline artifacts.</td>
+                <td><a href="https://github.com/JNA31A_AIT/svs-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/svs-agent-runtime</a></td>
+                <td>Runtime-specific extension point for one registry family.</td>
+              </tr>
+              <tr>
+                <td><strong>Thoracic runtime</strong></td>
+                <td>Registry-specific runtime repository for thoracic pipeline artifacts.</td>
+                <td><a href="https://github.com/JNA31A_AIT/thoracic-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/thoracic-agent-runtime</a></td>
+                <td>Runtime-specific extension point for one registry family.</td>
+              </tr>
+              <tr>
+                <td><strong>Local source folders</strong></td>
+                <td>Non-git local source folders used during exploration and raw artifact inspection.</td>
+                <td><code>STS/</code>, <code>AHA/</code>, <code>SVS/</code></td>
+                <td>Local source workspaces, not governed code repositories.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <section id="flow" class="section split-section">
-        <div class="section-heading narrow">
-          <p class="eyebrow">End-to-end flow</p>
-          <h2>How a registry becomes usable data.</h2>
-          <p>
-            The pipeline is intentionally metadata managed. Raw data is
-            preserved first; interpretation happens through versioned mapping
-            and review artifacts.
-          </p>
+      <section id="inventory" class="section">
+        <div class="section-title">
+          <p class="kicker">Registry inventory</p>
+          <h2>Registry modelling and contract-generation coverage</h2>
         </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Registry</th>
+                <th>Pipeline status</th>
+                <th>Primary source shape</th>
+                <th>Artifacts available</th>
+                <th>Review/UI status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>STS</strong></td>
+                <td><span class="status active">Full pipeline example</span></td>
+                <td>Versioned registry extract with large source schema</td>
+                <td>Bronze structure mapping, silver dictionary, column mapping, lineage CSV, dry-run SQL/contracts</td>
+                <td>Interactive review app is wired to promoted STS artifacts</td>
+              </tr>
+              <tr>
+                <td><strong>CathPCI</strong></td>
+                <td><span class="status planned">Modelled / contracted</span></td>
+                <td>Excel/dictionary-driven source metadata and raw extracts</td>
+                <td>Bronze structure mapping and historical silver/gold dry-run contracts</td>
+                <td>Needs promotion into the same interactive review shape as STS</td>
+              </tr>
+              <tr>
+                <td><strong>AHA CSC / AHA PSC / Intermacs / SVS / Thoracic</strong></td>
+                <td><span class="status planned">Modelled / contracted</span></td>
+                <td>Registry-specific raw exports and structural groupings</td>
+                <td>Bronze structure mappings and historical bronze/silver/gold dry-run outputs</td>
+                <td>Pipeline artifacts exist; review UI promotion is follow-on work</td>
+              </tr>
+              <tr>
+                <td><strong>LAAO / AFib / ICD</strong></td>
+                <td><span class="status planned">Modelled / contracted</span></td>
+                <td>Registry-specific raw exports and structural groupings</td>
+                <td>Bronze structure mappings and historical bronze/silver/gold dry-run outputs</td>
+                <td>Pipeline artifacts exist; review UI promotion is follow-on work</td>
+              </tr>
+              <tr>
+                <td><strong>STEMI</strong></td>
+                <td><span class="status candidate">Skipped for now</span></td>
+                <td>Registry-specific raw export</td>
+                <td>Directory scaffold exists; current implementation intentionally skipped</td>
+                <td>Out of current demo scope</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-        <div class="pipeline">
-          <article class="pipeline-step">
-            <span class="step-number">01</span>
-            <h3>Source Intake</h3>
-            <p>Collect raw files, file hashes, modified timestamps, source paths, and inferred schema signatures.</p>
+      <section class="section">
+        <div class="section-title">
+          <p class="kicker">Implementation truth table</p>
+          <h2>Pipeline coverage versus review-console coverage</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Registries covered</th>
+                <th>Evidence in repo</th>
+                <th>How to talk about it</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Bronze modelling</strong></td>
+                <td>AFib, AHA CSC, AHA PSC, CathPCI, ICD, Intermacs, LAAO, STS, SVS, Thoracic</td>
+                <td><code>manifests/&lt;registry&gt;/bronze/structure_mapping.json</code></td>
+                <td>Bronze registry source structures have been modelled into approved buckets.</td>
+              </tr>
+              <tr>
+                <td><strong>Silver contract generation</strong></td>
+                <td>AHA CSC, AHA PSC, Intermacs, SVS, Thoracic, AFib, ICD, LAAO, CathPCI, STS</td>
+                <td><code>artifacts/dry-run/silver/&lt;run&gt;/registries/&lt;registry&gt;/...</code></td>
+                <td>Silver contracts and SQL have been generated through the pipeline for the registry set.</td>
+              </tr>
+              <tr>
+                <td><strong>Gold contract generation</strong></td>
+                <td>AHA CSC, AHA PSC, Intermacs, SVS, Thoracic, AFib, ICD, LAAO, CathPCI, STS</td>
+                <td><code>artifacts/dry-run/gold/&lt;run&gt;/registries/&lt;registry&gt;/...</code></td>
+                <td>Gold publication contracts have been generated as dry-run artifacts for the registry set.</td>
+              </tr>
+              <tr>
+                <td><strong>Interactive review artifacts</strong></td>
+                <td>STS</td>
+                <td><code>manifests/sts/silver/column_mapping.json</code>, dictionary JSON, lineage CSV</td>
+                <td>STS is the polished review-console example, not the only modelled registry.</td>
+              </tr>
+              <tr>
+                <td><strong>Snowflake app seed</strong></td>
+                <td>STS first</td>
+                <td><code>registry-review-snowflake seed --registry sts</code></td>
+                <td>The first Snowflake app path demonstrates deployment; broad registry seeding is follow-on implementation.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="pipeline" class="section">
+        <div class="section-title">
+          <p class="kicker">Pipeline model</p>
+          <h2>Bronze, silver, and gold responsibilities</h2>
+        </div>
+        <div class="stage-list">
+          <article>
+            <span>01</span>
+            <h3>Source intake</h3>
+            <p>Discover source files, calculate file hashes, infer schema signatures, and assign registry/run identifiers.</p>
+            <code>source files -> manifest -> schema version grouping</code>
           </article>
-          <article class="pipeline-step">
-            <span class="step-number">02</span>
-            <h3>Bronze Preserve</h3>
-            <p>Land raw values into schema-version grouped bronze tables and quarantine unmapped structures without losing the run.</p>
+          <article>
+            <span>02</span>
+            <h3>Bronze preservation</h3>
+            <p>Load raw values into schema-version grouped bronze tables. Unknown or unmapped structures are quarantined, not silently dropped.</p>
+            <code>raw values + provenance + load status</code>
           </article>
-          <article class="pipeline-step">
-            <span class="step-number">03</span>
-            <h3>Silver Normalize</h3>
-            <p>Apply approved source-to-canonical mappings, casts, aliases, nullable policy, and semantic grouping.</p>
+          <article>
+            <span>03</span>
+            <h3>Silver normalization</h3>
+            <p>Map source fields to canonical columns using approved dictionary aliases, match rules, type policy, and transform rules.</p>
+            <code>source column -> canonical silver column</code>
           </article>
-          <article class="pipeline-step">
-            <span class="step-number">04</span>
-            <h3>Gold Publish</h3>
-            <p>Publish governed flat contracts for analytics, Power BI coverage, filters, and business logic review.</p>
+          <article>
+            <span>04</span>
+            <h3>Gold publication</h3>
+            <p>Select reviewed silver fields into a flat analytics contract with business rules, filters, and coverage checks.</p>
+            <code>silver contract -> gold publication contract</code>
           </article>
-          <article class="pipeline-step">
-            <span class="step-number">05</span>
-            <h3>Review + Promote</h3>
-            <p>Export decisions into patch artifacts, validate through the control plane, and promote by pull request.</p>
+          <article>
+            <span>05</span>
+            <h3>Review and promotion</h3>
+            <p>Validate generated contracts and promote approved metadata or runtime changes through pull requests.</p>
+            <code>contract artifacts -> validation -> PR -> generated runtime</code>
           </article>
         </div>
       </section>
 
       <section id="metadata" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Metadata collected</p>
-          <h2>The platform captures the evidence behind every transform.</h2>
+        <div class="section-title">
+          <p class="kicker">Metadata model</p>
+          <h2>Fields collected by layer</h2>
         </div>
-
-        <div class="metadata-board">
+        <div class="metadata-grid">
           <article>
-            <span class="layer-label bronze">Bronze</span>
-            <h3>Raw provenance and schema evidence</h3>
+            <h3>Bronze metadata</h3>
             <ul>
-              <li>Registry id, source file path, file hash, source modified timestamp</li>
-              <li>Ingestion run id, ingested timestamp, source schema version</li>
-              <li>Structure bucket, bronze table, column ordinal, inferred type</li>
-              <li>Row counts, load status, quarantine reason, validation errors</li>
+              <li><strong>Provenance:</strong> registry id, source system, file path, file name, file hash, file modified timestamp.</li>
+              <li><strong>Run evidence:</strong> ingestion run id, ingested timestamp, load status, row count, validation errors.</li>
+              <li><strong>Schema evidence:</strong> source schema version, structure bucket, raw table name, source column, ordinal, inferred type.</li>
+              <li><strong>Exception handling:</strong> quarantine reason, unmapped structure, ignored path, failed parse evidence.</li>
             </ul>
           </article>
           <article>
-            <span class="layer-label silver">Silver</span>
-            <h3>Canonical mapping and normalization evidence</h3>
+            <h3>Silver metadata</h3>
             <ul>
-              <li>Source schema version, bronze table, source column, target silver column</li>
-              <li>Mapping status, match rule, confidence score, mapping evidence</li>
-              <li>Target type, nullable policy, semantic group, transform rule</li>
-              <li>Approved by, effective version range, lineage key, validation status</li>
+              <li><strong>Lineage:</strong> source schema version, bronze table, source column, target silver table, target column.</li>
+              <li><strong>Mapping:</strong> mapping status, match rule, confidence score, evidence, reviewer status.</li>
+              <li><strong>Policy:</strong> target data type, nullable policy, semantic group, effective version range.</li>
+              <li><strong>Transform:</strong> cast/normalize/parse rule, validation status, lineage key.</li>
             </ul>
           </article>
           <article>
-            <span class="layer-label gold">Gold</span>
-            <h3>Publication contract and analytics evidence</h3>
+            <h3>Gold metadata</h3>
             <ul>
-              <li>Published column list, source silver table, target gold table</li>
-              <li>Business rule notes, filters, inclusion status, review status</li>
-              <li>Power BI coverage, missing fields, candidate publication gaps</li>
-              <li>Versioned contract artifacts for governed promotion</li>
+              <li><strong>Contract:</strong> source silver table, target gold table, published columns, included/excluded status.</li>
+              <li><strong>Business logic:</strong> filters, derived rules, metric definitions, review notes.</li>
+              <li><strong>Consumer coverage:</strong> Power BI fields, missing fields, available silver/gold mappings.</li>
+              <li><strong>Promotion:</strong> contract version, artifact path, validation result, approval status.</li>
             </ul>
           </article>
         </div>
       </section>
 
-      <section class="section governance">
-        <div class="section-heading narrow">
-          <p class="eyebrow">Governance story</p>
-          <h2>Two operating views, one controlled metadata lifecycle.</h2>
+      <section id="artifacts" class="section">
+        <div class="section-title">
+          <p class="kicker">Artifacts to inspect</p>
+          <h2>Local files that back the pipeline walkthrough</h2>
         </div>
-        <div class="two-column">
-          <article class="feature-panel">
-            <h3>Production Health</h3>
-            <p>
-              Shows whether the data platform is safe today: latest run status,
-              freshness, validation failures, schema drift, and alert
-              candidates.
-            </p>
+        <div class="artifact-list">
+          <div>
+            <strong>Registry bronze structure mappings</strong>
+            <code>../registry-control-plane/manifests/&lt;registry&gt;/bronze/structure_mapping.json</code>
+          </div>
+          <div>
+            <strong>Registry silver dry-run contracts</strong>
+            <code>../registry-control-plane/artifacts/dry-run/silver/&lt;run&gt;/registries/&lt;registry&gt;/...</code>
+          </div>
+          <div>
+            <strong>Registry gold dry-run contracts</strong>
+            <code>../registry-control-plane/artifacts/dry-run/gold/&lt;run&gt;/registries/&lt;registry&gt;/...</code>
+          </div>
+          <div>
+            <strong>STS promoted review metadata</strong>
+            <code>../registry-control-plane/manifests/sts/silver/review/source_to_canonical_lineage.csv</code>
+          </div>
+          <div>
+            <strong>Power BI chart fields</strong>
+            <code>references/powerbi/sts_powerbi_chart_columns.txt</code>
+          </div>
+          <div>
+            <strong>Snowflake E2E tool plan</strong>
+            <code>docs/snowflake-registry-review-platform-plan.md</code>
+          </div>
+          <div>
+            <strong>Health and metadata operating model</strong>
+            <code>docs/registry-health-and-metadata-planning-operating-model.md</code>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <p class="kicker">Operational surfaces</p>
+          <h2>How the pipeline and review app fit together</h2>
+        </div>
+        <div class="surface-grid">
+          <article>
+            <h3>Pipeline generation</h3>
+            <p>Bronze mappings, silver contracts, gold contracts, generated SQL, and generated validation SQL.</p>
           </article>
-          <article class="feature-panel">
-            <h3>Metadata Planning</h3>
-            <p>
-              Shows what the platform should become next: dictionary changes,
-              low-confidence mappings, Power BI gaps, and flat gold candidates.
-            </p>
+          <article>
+            <h3>Pipeline health</h3>
+            <p>Run status, generated artifact paths, validation results, schema drift, and alert candidates.</p>
+          </article>
+          <article>
+            <h3>Review console</h3>
+            <p>Human review surface for dictionary, lineage, Power BI coverage, and gold planning. STS is wired today.</p>
+          </article>
+          <article>
+            <h3>Promotion</h3>
+            <p>Approved metadata and runtime changes move through validation gates and pull requests.</p>
           </article>
         </div>
       </section>
 
-      <section id="streamlit" class="section app-launch">
-        <div class="section-heading">
-          <p class="eyebrow">Local demo launchpad</p>
-          <h2>Run the local site and STS Streamlit tools side by side.</h2>
-          <p>
-            Start the Streamlit review console on port 8501, then use this page
-            as the interview walkthrough and launchpad.
-          </p>
+      <section id="apps" class="section">
+        <div class="section-title">
+          <p class="kicker">Local commands</p>
+          <h2>Run the demo surfaces</h2>
         </div>
-
-        <div class="command-grid">
-          <article class="command-card">
-            <h3>Start this website</h3>
+        <div class="command-list">
+          <div>
+            <strong>Static documentation site</strong>
             <code>python -m http.server 8080 --directory showcase/local-registry-website</code>
-          </article>
-          <article class="command-card">
-            <h3>Start STS Streamlit review app</h3>
+            <a href="http://localhost:8080" target="_blank" rel="noreferrer">Open local documentation</a>
+          </div>
+          <div>
+            <strong>STS Streamlit review console, secondary surface</strong>
             <code>uv run streamlit run tools/mapping_review_app.py --server.port 8501</code>
-          </article>
-          <article class="command-card">
-            <h3>Open Snowflake E2E dry-run plan</h3>
+            <a href="http://localhost:8501" target="_blank" rel="noreferrer">Open STS Streamlit app</a>
+          </div>
+          <div>
+            <strong>Snowflake seed dry-run</strong>
             <code>uv run registry-review-snowflake seed --registry sts --run-id 20260528T000000Z --dry-run</code>
-          </article>
-        </div>
-
-        <div class="launch-buttons">
-          <a class="button primary" href="http://localhost:8501" target="_blank" rel="noreferrer">Open STS Streamlit</a>
-          <a class="button secondary" href="http://localhost:8080" target="_blank" rel="noreferrer">Open Showcase Home</a>
+            <span>Generates the Snowflake seed plan and typed payload files under <code>build/snowflake/sts/</code>.</span>
+          </div>
         </div>
       </section>
     </main>
