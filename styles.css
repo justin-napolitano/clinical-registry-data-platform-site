@@ -239,9 +239,10 @@ tr:last-child td {
 }
 
 .stage-list article {
+  align-items: start;
   display: grid;
-  gap: 10px 18px;
-  grid-template-columns: 52px 1fr;
+  gap: 8px 18px;
+  grid-template-columns: 52px minmax(0, 1fr);
 }
 
 .stage-list article span {
@@ -251,14 +252,23 @@ tr:last-child td {
   color: #fff;
   display: flex;
   font-weight: 800;
+  grid-column: 1;
+  grid-row: 1 / span 3;
   height: 42px;
   justify-content: center;
   width: 42px;
 }
 
 .stage-list h3,
+.stage-list p,
+.stage-list .flow-line {
+  grid-column: 2;
+}
+
+.stage-list h3,
 .stage-list p {
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 .metadata-grid {
@@ -324,8 +334,9 @@ code {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  grid-column: 2;
-  margin-top: 2px;
+  justify-content: flex-start;
+  margin-top: 6px;
+  width: 100%;
 }
 
 .flow-line b {
@@ -403,7 +414,14 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .stage-list article span,
+  .stage-list h3,
+  .stage-list p,
   .flow-line {
     grid-column: 1;
+  }
+
+  .stage-list article span {
+    grid-row: auto;
   }
 }
