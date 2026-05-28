@@ -248,31 +248,31 @@
             <span>01</span>
             <h3>Source intake</h3>
             <p>Discover source files, calculate file hashes, infer schema signatures, and assign registry/run identifiers.</p>
-            <code>source files -> manifest -> schema version grouping</code>
+            <div class="flow-line"><b>Source files</b><em></em><b>Manifest</b><em></em><b>Schema version grouping</b></div>
           </article>
           <article>
             <span>02</span>
             <h3>Bronze preservation</h3>
             <p>Load raw values into schema-version grouped bronze tables. Unknown or unmapped structures are quarantined, not silently dropped.</p>
-            <code>raw values + provenance + load status</code>
+            <div class="flow-line"><b>Raw values</b><em></em><b>Provenance</b><em></em><b>Load status</b></div>
           </article>
           <article>
             <span>03</span>
             <h3>Silver normalization</h3>
             <p>Map source fields to canonical columns using approved dictionary aliases, match rules, type policy, and transform rules.</p>
-            <code>source column -> canonical silver column</code>
+            <div class="flow-line"><b>Source column</b><em></em><b>Canonical silver column</b></div>
           </article>
           <article>
             <span>04</span>
             <h3>Gold publication</h3>
             <p>Select reviewed silver fields into a flat analytics contract with business rules, filters, and coverage checks.</p>
-            <code>silver contract -> gold publication contract</code>
+            <div class="flow-line"><b>Silver contract</b><em></em><b>Gold publication contract</b></div>
           </article>
           <article>
             <span>05</span>
             <h3>Review and promotion</h3>
             <p>Validate generated contracts and promote approved metadata or runtime changes through pull requests.</p>
-            <code>contract artifacts -> validation -> PR -> generated runtime</code>
+            <div class="flow-line"><b>Contract artifacts</b><em></em><b>Validation</b><em></em><b>PR</b><em></em><b>Runtime</b></div>
           </article>
         </div>
       </section>
