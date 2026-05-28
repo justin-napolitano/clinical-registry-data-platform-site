@@ -263,6 +263,7 @@ tr:last-child td {
 
 .stage-list code {
   grid-column: 2;
+  justify-self: start;
 }
 
 .metadata-grid {
@@ -313,11 +314,22 @@ code {
   border: 1px solid var(--line);
   border-radius: 8px;
   color: #23312c;
-  display: inline-block;
+  display: inline;
   font-family: "Cascadia Mono", "Courier New", monospace;
   font-size: 0.88rem;
   line-height: 1.45;
+  overflow-wrap: anywhere;
   padding: 3px 6px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.stage-list code {
+  background: transparent;
+  border-color: #cfd8d1;
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 2px 0;
 }
 
 .artifact-list,
