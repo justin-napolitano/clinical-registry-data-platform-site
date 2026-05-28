@@ -61,7 +61,7 @@
       <section id="repos" class="section">
         <div class="section-title">
           <p class="kicker">Repository map</p>
-          <h2>Repos and local folders touched by this data product</h2>
+          <h2>Active repos and data locations used by this pipeline</h2>
         </div>
         <div class="table-wrap">
           <table>
@@ -75,94 +75,28 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>Registry control plane</strong></td>
-                <td>Metadata ledger, bronze/silver/gold manifests, dry-run artifacts, generated SQL, validation SQL.</td>
-                <td><a href="https://github.com/JNA31A_AIT/registry-control-plane" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/registry-control-plane</a></td>
-                <td>Core data-product compiler and governed metadata source of truth.</td>
+                <td><strong>Registry runtime</strong></td>
+                <td>Pipeline engine for source inventory, upload-pack generation, metadata stamping, Snowflake load-plan SQL, validation SQL, and run artifacts.</td>
+                <td><a href="https://github.com/JNA31A_AIT/registry-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/registry-runtime</a></td>
+                <td>This is the executable runtime for generating registry pipeline artifacts across the portfolio.</td>
               </tr>
               <tr>
-                <td><strong>STS runtime/model adapters</strong></td>
-                <td>STS bronze bridge, STS silver normalization, version support, dictionary compiler, lineage generation, and dry-run artifacts.</td>
-                <td><code>registry-control-plane/src/registry_control_plane/bronze/sts_bridge.py</code>, <code>silver/sts_normalization.py</code>, <code>silver/sts_dictionary_seed.py</code></td>
-                <td>STS is implemented inside the shared control plane rather than a separate runtime repo.</td>
+                <td><strong>Registry control-plane metadata</strong></td>
+                <td>Promoted candidate metadata handoff: manifests, metadata references, Snowflake SQL, validation SQL, checksums, and promotion state. No CSV payloads.</td>
+                <td><a href="https://github.com/JNA31A_AIT/registry-control-plane-metadata" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/registry-control-plane-metadata</a></td>
+                <td>This is the reviewable, versioned control-plane output for architects and deployment planning.</td>
               </tr>
               <tr>
-                <td><strong>CathPCI runtime/model adapters</strong></td>
-                <td>CathPCI bronze preprocessing, workbook bridge, migration boundary logic, and dry-run contracts.</td>
-                <td><code>registry-control-plane/src/registry_control_plane/bronze/cathpci_preprocess.py</code>, <code>bronze/cathpci_bridge.py</code>, <code>migration/cathpci_boundary.py</code></td>
-                <td>CathPCI is also integrated into the shared control plane rather than a separate runtime repo.</td>
+                <td><strong>Registry mapping review console</strong></td>
+                <td>Human review and demo surface for metadata, mappings, schema drift, registry portfolio pages, and future Snowflake Streamlit views.</td>
+                <td><a href="https://github.com/JNA31A_AIT/registry-mapping-review-console" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/registry-mapping-review-console</a></td>
+                <td>This is the product/review interface for explaining and governing pipeline outputs.</td>
               </tr>
               <tr>
-                <td><strong>Mapping review console</strong></td>
-                <td>Local/Snowflake Streamlit review surface and this documentation portal.</td>
-                <td><code>registry-mapping-review-console</code> local repo, no remote configured</td>
-                <td>Human review layer for lineage, dictionary, Power BI coverage, and gold planning.</td>
-              </tr>
-              <tr>
-                <td><strong>Platform template / orchestration tools</strong></td>
-                <td>Governance rules, execution plans, DAG orchestration, validation gates, agent workflow tooling.</td>
-                <td><a href="https://github.com/JNA31A_AIT/codex_platform" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/codex_platform</a></td>
-                <td>Engineering system used to plan, validate, and govern implementation work.</td>
-              </tr>
-              <tr>
-                <td><strong>Project control plane</strong></td>
-                <td>Project-level orchestration plan for registry buildout and implementation slices.</td>
-                <td><a href="https://github.com/JNA31A_AIT/project-control-plane" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/project-control-plane</a></td>
-                <td>Work orchestration layer for coordinating registry platform delivery.</td>
-              </tr>
-              <tr>
-                <td><strong>Researcher harness</strong></td>
-                <td>Research/evidence workflow used to support planning, design reviews, and implementation decisions.</td>
-                <td><a href="https://github.com/JNA31A_AIT/researcher-harness" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/researcher-harness</a></td>
-                <td>Research-backed planning and decision-support tooling.</td>
-              </tr>
-              <tr>
-                <td><strong>Clinical metadata repo</strong></td>
-                <td>Governed source metadata workspace for registry dictionaries, source artifacts, and modelling inputs.</td>
-                <td><a href="https://github.com/JNA31A_AIT/cardio-vascular-institute-meta-work-data" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/cardio-vascular-institute-meta-work-data</a></td>
-                <td>Metadata product input repo feeding bronze/silver/gold contract generation.</td>
-              </tr>
-              <tr>
-                <td><strong>Metadata run outputs</strong></td>
-                <td>Local generated outputs and exploratory run material used while validating metadata extraction.</td>
-                <td><code>cardio-vascular-institute-meta-work-data-runs/</code> local folder, no remote configured</td>
-                <td>Run-output workspace, separate from the governed metadata repo.</td>
-              </tr>
-              <tr>
-                <td><strong>AHA CSC runtime</strong></td>
-                <td>Registry-specific runtime repository for AHA CSC pipeline artifacts.</td>
-                <td><a href="https://github.com/JNA31A_AIT/aha-csc-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/aha-csc-agent-runtime</a></td>
-                <td>Runtime-specific extension point for one registry family.</td>
-              </tr>
-              <tr>
-                <td><strong>AHA PSC runtime</strong></td>
-                <td>Registry-specific runtime repository for AHA PSC pipeline artifacts.</td>
-                <td><a href="https://github.com/JNA31A_AIT/aha-psc-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/aha-psc-agent-runtime</a></td>
-                <td>Runtime-specific extension point for one registry family.</td>
-              </tr>
-              <tr>
-                <td><strong>Intermacs runtime</strong></td>
-                <td>Registry-specific runtime repository for Intermacs pipeline artifacts.</td>
-                <td><a href="https://github.com/JNA31A_AIT/intermacs-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/intermacs-agent-runtime</a></td>
-                <td>Runtime-specific extension point for one registry family.</td>
-              </tr>
-              <tr>
-                <td><strong>SVS runtime</strong></td>
-                <td>Registry-specific runtime repository for SVS pipeline artifacts.</td>
-                <td><a href="https://github.com/JNA31A_AIT/svs-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/svs-agent-runtime</a></td>
-                <td>Runtime-specific extension point for one registry family.</td>
-              </tr>
-              <tr>
-                <td><strong>Thoracic runtime</strong></td>
-                <td>Registry-specific runtime repository for thoracic pipeline artifacts.</td>
-                <td><a href="https://github.com/JNA31A_AIT/thoracic-agent-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/thoracic-agent-runtime</a></td>
-                <td>Runtime-specific extension point for one registry family.</td>
-              </tr>
-              <tr>
-                <td><strong>Local source folders</strong></td>
-                <td>Non-git local source folders used during exploration and raw artifact inspection.</td>
-                <td><code>STS/</code>, <code>AHA/</code>, <code>SVS/</code></td>
-                <td>Local source workspaces, not governed code repositories.</td>
+                <td><strong>Registry control-plane data dump</strong></td>
+                <td>Local encrypted PHI-bearing CSV bundle storage. Holds generated upload-pack archives as <code>.tar.gz.gpg</code> files.</td>
+                <td><code>/mnt/c/Users/jna31a/advent-repos/jna31a_ait/registry-control-plane-data-dump</code></td>
+                <td>Operational PHI payload store. It is intentionally not a Git repository.</td>
               </tr>
             </tbody>
           </table>
