@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registry Artifacts</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div><p class="kicker">Artifacts</p><h1>Files That Back The Walkthrough</h1></div>
+      <nav><a href="index.html">Home</a><a href="repos.html">Repos</a><a href="apps.html">Apps</a></nav>
+    </header>
+    <main>
+      <section class="section">
+        <div class="section-title"><p class="kicker">Inspect locally</p><h2>Local files that back the pipeline walkthrough</h2></div>
+        <div class="artifact-list">
+          <div><strong>Registry runtime runs</strong><code>../registry-runtime/runs/&lt;registry&gt;/&lt;run_id&gt;/</code></div>
+          <div><strong>Promoted metadata handoff</strong><code>../registry-control-plane-metadata/registries/&lt;registry&gt;/promoted/current/</code></div>
+          <div><strong>Snowflake load SQL</strong><code>../registry-control-plane-metadata/registries/&lt;registry&gt;/promoted/current/snowflake_load_plan/</code></div>
+          <div><strong>Validation SQL</strong><code>../registry-control-plane-metadata/registries/&lt;registry&gt;/promoted/current/validation/</code></div>
+          <div><strong>Encrypted CSV data dump</strong><code>../registry-control-plane-data-dump/encrypted-upload-packs/</code></div>
+          <div><strong>Encrypted dump manifest</strong><code>../registry-control-plane-data-dump/encrypted_upload_pack_manifest.json</code></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registry Platform Repos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div><p class="kicker">Repository map</p><h1>Active Pipeline Repos</h1></div>
+      <nav><a href="index.html">Home</a><a href="registry-portfolio.html">Coverage</a><a href="pipeline.html">Pipeline</a></nav>
+    </header>
+    <main>
+      <section class="section">
+        <div class="section-title">
+          <p class="kicker">Active pipeline</p>
+          <h2>Repos and data locations used by this pipeline</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Component</th><th>Role in product</th><th>Repository / path</th><th>Interview framing</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Registry runtime</strong></td><td>Pipeline engine for source inventory, upload-pack generation, metadata stamping, Snowflake load-plan SQL, validation SQL, and run artifacts.</td><td><a href="https://github.com/JNA31A_AIT/registry-runtime" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/registry-runtime</a></td><td>Executable runtime for generating registry pipeline artifacts across the registry set.</td></tr>
+              <tr><td><strong>Registry control-plane metadata</strong></td><td>Promoted candidate metadata handoff: manifests, metadata references, Snowflake SQL, validation SQL, checksums, and promotion state. No CSV payloads.</td><td><a href="https://github.com/JNA31A_AIT/registry-control-plane-metadata" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/registry-control-plane-metadata</a></td><td>Reviewable, versioned control-plane output for architects and deployment planning.</td></tr>
+              <tr><td><strong>Registry mapping review console</strong></td><td>Human review and demo surface for metadata, mappings, schema drift, registry coverage pages, and future Snowflake Streamlit views.</td><td><a href="https://github.com/JNA31A_AIT/registry-mapping-review-console" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/registry-mapping-review-console</a></td><td>Product/review interface for explaining and governing pipeline outputs.</td></tr>
+              <tr><td><strong>Registry control-plane data dump</strong></td><td>Local encrypted PHI-bearing CSV bundle storage. Holds generated upload-pack archives as <code>.tar.gz.gpg</code> files.</td><td><code>/mnt/c/Users/jna31a/advent-repos/jna31a_ait/registry-control-plane-data-dump</code></td><td>Operational PHI payload store. Intentionally not a Git repository.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <p class="kicker">Honorable mention</p>
+          <h2>Platform tooling used to plan and govern work</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Component</th><th>Role in this program</th><th>Repository / path</th><th>Why it is separate</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Codex platform tooling</strong></td><td>Reusable orchestration layer for DAGs, grouped DAGs, execplans, validation gates, research-to-implementation handoff, and governed agent workflow rules.</td><td><a href="https://github.com/JNA31A_AIT/codex_platform" target="_blank" rel="noreferrer">github.com/JNA31A_AIT/codex_platform</a><br /><code>platform-template-bootstrap/</code></td><td>It governs how work is planned and executed across projects; it is not part of the registry data pipeline runtime itself.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

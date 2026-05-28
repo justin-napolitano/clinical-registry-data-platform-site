@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registry Apps And Commands</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div><p class="kicker">Local commands</p><h1>Run The Demo Surfaces</h1></div>
+      <nav><a href="index.html">Home</a><a href="registry-portfolio.html">Coverage</a><a href="artifacts.html">Artifacts</a></nav>
+    </header>
+    <main>
+      <section class="section">
+        <div class="section-title"><p class="kicker">Operational surfaces</p><h2>How the pipeline and review app fit together</h2></div>
+        <div class="surface-grid">
+          <article><h3>Pipeline generation</h3><p>Bronze mappings, silver contracts, gold contracts, generated SQL, and generated validation SQL.</p></article>
+          <article><h3>Pipeline health</h3><p>Run status, generated artifact paths, validation results, schema drift, and alert candidates.</p></article>
+          <article><h3>Review console</h3><p>Human review surface for dictionary, lineage, Power BI coverage, and gold planning. STS is wired today.</p></article>
+          <article><h3>Promotion</h3><p>Approved metadata and runtime changes move through validation gates and pull requests.</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title"><p class="kicker">Commands</p><h2>Run the demo surfaces</h2></div>
+        <div class="command-list">
+          <div><strong>Static documentation site</strong><code>python -m http.server 8080 --directory showcase/local-registry-website</code><a href="http://localhost:8080" target="_blank" rel="noreferrer">Open local documentation</a></div>
+          <div><strong>STS Streamlit review console, secondary surface</strong><code>uv run streamlit run tools/mapping_review_app.py --server.port 8501</code><a href="http://localhost:8501" target="_blank" rel="noreferrer">Open STS Streamlit app</a></div>
+          <div><strong>Snowflake seed dry-run</strong><code>uv run registry-review-snowflake seed --registry sts --run-id 20260528T000000Z --dry-run</code><span>Generates the Snowflake seed plan and typed payload files under <code>build/snowflake/sts/</code>.</span></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

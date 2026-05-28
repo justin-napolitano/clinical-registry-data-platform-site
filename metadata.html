@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registry Metadata Model</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div><p class="kicker">Metadata model</p><h1>Fields Collected By Layer</h1></div>
+      <nav><a href="index.html">Home</a><a href="pipeline.html">Pipeline</a><a href="artifacts.html">Artifacts</a></nav>
+    </header>
+    <main>
+      <section class="section">
+        <div class="section-title"><p class="kicker">Layer evidence</p><h2>Metadata fields collected by layer</h2></div>
+        <div class="metadata-grid">
+          <article><h3>Bronze metadata</h3><ul><li><strong>Provenance:</strong> registry id, source system, file path, file name, file hash, file modified timestamp.</li><li><strong>Run evidence:</strong> ingestion run id, ingested timestamp, load status, row count, validation errors.</li><li><strong>Schema evidence:</strong> source schema version, structure bucket, raw table name, source column, ordinal, inferred type.</li><li><strong>Exception handling:</strong> quarantine reason, unmapped structure, ignored path, failed parse evidence.</li></ul></article>
+          <article><h3>Silver metadata</h3><ul><li><strong>Lineage:</strong> source schema version, bronze table, source column, target silver table, target column.</li><li><strong>Mapping:</strong> mapping status, match rule, confidence score, evidence, reviewer status.</li><li><strong>Policy:</strong> target data type, nullable policy, semantic group, effective version range.</li><li><strong>Transform:</strong> cast/normalize/parse rule, validation status, lineage key.</li></ul></article>
+          <article><h3>Gold metadata</h3><ul><li><strong>Contract:</strong> source silver table, target gold table, published columns, included/excluded status.</li><li><strong>Business logic:</strong> filters, derived rules, metric definitions, review notes.</li><li><strong>Consumer coverage:</strong> Power BI fields, missing fields, available silver/gold mappings.</li><li><strong>Promotion:</strong> contract version, artifact path, validation result, approval status.</li></ul></article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
