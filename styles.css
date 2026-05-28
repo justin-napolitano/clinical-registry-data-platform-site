@@ -34,13 +34,11 @@ a {
 }
 
 .topbar {
-  align-items: end;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
-  display: flex;
-  gap: 32px;
-  justify-content: space-between;
-  padding: 28px 36px;
+  display: grid;
+  gap: 18px;
+  padding: 24px 36px 18px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -64,8 +62,9 @@ a {
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  justify-content: flex-end;
+  gap: 10px;
+  justify-content: flex-start;
+  max-width: 100%;
 }
 
 nav a {
@@ -452,14 +451,8 @@ code {
 
 @media (max-width: 860px) {
   .topbar {
-    align-items: start;
-    flex-direction: column;
     padding: 22px;
     position: static;
-  }
-
-  nav {
-    justify-content: flex-start;
   }
 
   main {
